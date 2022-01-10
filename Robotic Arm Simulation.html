@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<body>
+<canvas id="gl-canvas" width="512" height="512"></canvas>
+
+<div> Move Cube X <input id="Rotate" type="range" min="-.75" max=".75" step=".05" value=".5" />(-.75 to .75) </div>
+<button id= "A1RY+">Rotate +Y</button>
+<button id= "A1RY-">Rotate -Y</button>
+<button id= "PickUp">Pick Up Block</button>
+<button id= "PutDown">Put Down Block</button>
+<button id= "A1EY-">_____Arm1 Retract -Y_____</button>
+<button id= "A1EY+">_____Arm1 Extend Y_____</button>
+<button id= "A2EY-">_____Arm2 Retract -Y_____</button>
+<button id= "A2EY+">_____Arm2 Extend Y_____</button>
+<button id= "A3EY-">_____Arm3 Retract -Y_____</button>
+<button id= "A3EY+">_____Arm3 Extend Y_____</button>
+<button id= "TA">Toggle Animation Sequence</button>
+<button id= "CR">Move Camera Right</button>
+<button id= "CL">Move Camera Left</button>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+<title>F21_CG_Program2_Spencer_Meyer</title>
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+#version 300 es
+
+in vec4 aPosition;
+in vec4 aColor;
+uniform mat4 uModelViewMatrix;
+uniform mat4 uProjectionMatrix;
+out vec4 vColor;
+
+void
+main()
+{
+
+    gl_Position = uProjectionMatrix*uModelViewMatrix*aPosition;
+    vColor = aColor;
+    
+}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+#version 300 es
+precision mediump float;
+
+in vec4 vColor;
+out vec4 fColor;
+
+void
+main()
+{
+    fColor = vColor;
+}
+</script>
+
+<script type="text/javascript" src="../Common/initShaders.js"></script>
+<script type="text/javascript" src="../Common/MVnew.js"></script>
+<script type="text/javascript" src="F21_CG_Prog2_Spencer_Meyer.js"></script>
+</body>
+</html>
